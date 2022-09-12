@@ -1,6 +1,8 @@
+import styles from './Item.module.css'
+
 const Item = (props) => {
   return (
-    <li>
+    <li className={styles.item}>
       <div>
         <h3>{props.item.name}</h3>
         <p>{props.item.ingredients}</p>
@@ -8,7 +10,7 @@ const Item = (props) => {
       </div>
       <div>
         <label htmlFor={`${props.item.id}`}>Amount</label>
-        <input type='number' id={`${props.item.id}`} />
+        <input type='number' id={`${props.item.id}`}/>
         <button>+ Add</button>
       </div>
     </li>

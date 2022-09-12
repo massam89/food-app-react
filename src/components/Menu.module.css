@@ -1,0 +1,12 @@
+.menu ul {
+  max-width: 800px;
+  height: auto;
+  background-color: var(--white);
+  margin: 100px auto 50px auto;
+  padding: 20px;
+  border-radius: 10px;
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

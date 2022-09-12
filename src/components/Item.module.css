@@ -1,0 +1,57 @@
+.item {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid gainsboro;
+  padding: 10px 0;
+}
+
+.item div * {
+  margin-bottom: 1px;
+}
+
+.item div p {
+  color: var(--grey-light);
+  font-size: 14px;
+}
+
+.item div span {
+  color: var( --red-light);
+}
+
+.item div button {
+  display: block;
+  margin: auto;
+  border: none;
+  background-color: var(--red-light);
+  color: var(--white);
+  padding: 5px 25px;
+  margin-top: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.item div input {
+  width: 40px;
+  margin-left: 10px;
+  background-color: var(--white);
+  border: 1px solid rgb(195, 191, 191);
+  border-radius: 3px;
+  padding-left: 5px;
+  color: gray;
+  font-weight: 900;
+}
+
+.item div input:focus {
+  outline: none;
+}
+
+.item div input::-webkit-outer-spin-button,
+.item div input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+.item div label {
+  font-size: 14px;
+  font-weight: 800;
+}

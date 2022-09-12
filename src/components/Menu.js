@@ -1,4 +1,5 @@
 import Item from "./Item"
+import styles from './Menu.module.css'
 
 const menu = [
   {
@@ -34,7 +35,7 @@ const menu = [
 const Menu = () => {
 
   return (
-    <section>
+    <section className={styles.menu}>
       <ul>
         { menu.map((item) => <Item item={item} key={item.id} />) }
       </ul>

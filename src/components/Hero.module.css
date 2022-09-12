@@ -19,7 +19,7 @@
 
 .box {
   background-color: var(--grey-light);
-  width: 600px;
+  max-width: 600px;
   position: absolute;
   left: 50%;
   top: 70%;
