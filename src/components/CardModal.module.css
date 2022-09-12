@@ -1,0 +1,95 @@
+.transparent {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  opacity: 0.7;
+  z-index: 100;
+}
+
+.CardModalInner{
+  position: absolute;
+  top: 0;
+  left: 50%;
+  top: 40%;
+  transform: translate(-50%, -50%);
+  min-width: 500px;
+  height: auto;
+  background-color: var(--white);
+  z-index: 200;
+  border-radius: 10px;
+  padding: 20px;
+
+}
+
+.CardModalInner ul li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1.5px solid var(--red-light);
+ padding: 10px 0;
+}
+
+.CardModalInner ul li div span:nth-child(2) {
+  color: var(--red-light);
+  font-weight: 900;
+  font-size: 14px;
+}
+
+.CardModalInner ul li div span:nth-child(3) {
+  border: 1px solid rgb(209, 205, 205);
+  padding: 0 5px;
+  display: inline-block;
+  margin-left: 20px;
+  border-radius: 5px;
+}
+
+.CardModalInner ul li div button {
+  display: inline-block;
+  border: none;
+  cursor: pointer;
+  text-align: center;
+  border: 1px solid var(--red-light);
+  outline: none;
+  margin: 0 5px;
+  padding: 2px 15px;
+  border-radius: 5px;
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--red-light);;
+}
+
+.totalAmount {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 0;
+}
+
+.totalAmount span {
+  font-size: 20px;
+  font-weight: 900;
+}
+
+.closeOrder {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.closeOrder button {
+  outline: none;
+  border: none;
+  border: 1px solid var(--red-light);
+  padding: 7px 20px;
+  margin: 0 10px;
+  border-radius: 20px;
+}
+
+.closeOrder button:nth-child(1) {
+  
+}
+
+.closeOrder button:nth-child(2) {
+  background-color: var(--red-light);
+  color: var(--white);
+}
