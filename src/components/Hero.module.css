@@ -1,0 +1,49 @@
+.hero {
+  height: 400px;
+  background-image: url("../img/hero.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: var(--white);
+  text-align: center;
+  z-index: 0;
+}
+
+.slide {
+ width: inherit;
+ height: inherit;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.box {
+  background-color: var(--grey-light);
+  width: 600px;
+  position: absolute;
+  left: 50%;
+  top: 70%;
+  transform: translate(-50%, -50%);
+  padding: 10px;
+  border-radius: 10px;
+  z-index: 3;
+}
+
+.box h2 {
+  margin-bottom: 20px;
+}
+
+.box p {
+  font-size: 14px;
+  font-weight: 200;
+}
+
+.shape {
+  background-color: var(--grey-dark);
+  width: 120%;
+  height: 200px;
+  position: absolute;
+  bottom: -137px;
+  z-index: 2;
+  transform: rotate(-5deg);
+}

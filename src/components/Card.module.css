@@ -1,0 +1,25 @@
+.card {
+  background-color: var(--red-dark);
+  padding: 10px 40px;
+  border: none;
+  border-radius: 30px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.card * {
+  margin-left: 10px;
+}
+
+.card span:nth-child(2) {
+  letter-spacing: 1px;
+}
+
+.card span:nth-child(3) {
+  display: inline-block;
+  background-color: var(--red-light);
+  padding: 2px 10px;
+  border-radius: 20px;
+  width: 35px;
+  text-align: center;
+}
