@@ -63,7 +63,7 @@
 .totalAmount {
   display: flex;
   justify-content: space-between;
-  margin: 10px 0;
+  margin: 20px 0;
 }
 
 .totalAmount span {
@@ -81,12 +81,9 @@
   border: none;
   border: 1px solid var(--red-light);
   padding: 7px 20px;
-  margin: 0 10px;
+  margin: 10px 10px 0px 10px;
   border-radius: 20px;
-}
-
-.closeOrder button:nth-child(1) {
-  
+  cursor: pointer;
 }
 
 .closeOrder button:nth-child(2) {

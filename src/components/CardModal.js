@@ -2,7 +2,7 @@ import styles from './CardModal.module.css'
 
 const CardModal = () => {
   return (
-    <div className={styles.cardModal} style={{ 'display': 'block' }}>
+    <div className={styles.cardModal} style={{ 'display': 'none' }}>
 
       <div className={styles.transparent}>sdf</div>
 
