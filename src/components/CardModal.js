@@ -1,10 +1,15 @@
+import { useContext } from 'react'
+import { Context } from '../context/ContextProvider'
+
 import styles from './CardModal.module.css'
 
 const CardModal = () => {
-  return (
-    <div className={styles.cardModal} style={{ 'display': 'none' }}>
+  const {onDisplay} = useContext(Context)
 
-      <div className={styles.transparent}>sdf</div>
+  return (
+    <div className={styles.cardModal}>
+
+      <div onClick={onDisplay} className={styles.transparent}>sdf</div>
 
       <div className={styles.CardModalInner}>
         <ul>
@@ -37,8 +42,8 @@ const CardModal = () => {
         </div>
        
        <div className={styles.closeOrder}>
-        <button>Close</button>
-        <button>Order</button>
+        <button onClick={onDisplay}>Close</button>
+        <button onClick={() => console.log('ordering...')}>Order</button>
        </div>
         
       </div>

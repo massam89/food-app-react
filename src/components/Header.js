@@ -1,9 +1,8 @@
-import { useContext } from "react"
-import { Context } from "../context/ContextProvider"
 import Card from "./Card"
 import styles from './Header.module.css'
 
 const Header = () => {
+ 
 
   return (
     <header className={styles.header}>
