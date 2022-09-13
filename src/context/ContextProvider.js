@@ -1,5 +1,5 @@
 import React, { useReducer } from 'react'
-
+import {items} from '../database/items.js'
 export const Context = React.createContext();
 
 const cardReducer = (state, action) => {
@@ -25,8 +25,12 @@ const ContextProvider = (props) => {
     dispatch({type: 'cardDisplay'})
   }
 
+  const addToCard = (item) => {
+    console.log(items);
+  }
+
   return (
-    <Context.Provider value={{ cardState, onDisplay }}>
+    <Context.Provider value={{ cardState, onDisplay, addToCard }}>
       {props.children}
     </Context.Provider>
   )

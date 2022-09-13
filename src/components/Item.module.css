@@ -42,6 +42,12 @@
   font-weight: 900;
 }
 
+.item div input.error {
+  background-color: rgb(223, 196, 196) ;
+  border: 1px solid rgb(230, 106, 106) ;
+}
+
+
 .item div input:focus {
   outline: none;
 }
