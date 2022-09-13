@@ -8,11 +8,15 @@ const cardReducer = (state, action) => {
       return ({ ...state, card: [...state.card, action.payload] })
     case 'cardDisplay':
       return ({...state, showCard: !state.showCard})
-    case 'addAmount':
-      state.card[action.payload.id].amount = state.card[action.payload.id].amount + action.payload.amount
-      return {...state}
+    case 'changeAmount':
+      const cards = state.card
+      cards[action.payload.id].amount = cards[action.payload.id].amount + action.payload.amount
+      return ({...state, card: [...cards]})
     case 'addTotalAmount':
       return ({...state, totalAmount: action.payload})
+    case 'removeItem':
+      const newCard = state.card.filter(item => item.id !== action.payload)
+      return ({...state, card: [...newCard]})
     default:
       return state
   }
@@ -32,8 +36,9 @@ const ContextProvider = (props) => {
     }, 0)
 
     dispatch({type: 'addTotalAmount', payload: sum})
+    console.log('effect');
    
-  }, [cardState.card])
+  },[cardState.card])
 
   const onDisplay = () => {
     dispatch({type: 'cardDisplay'})
@@ -46,7 +51,7 @@ const ContextProvider = (props) => {
     if (!cardState.card.some(item => item.id == data.id)){
       dispatch({type: 'addToCard', payload: itemData})
     } else {
-      dispatch({type:'addAmount', payload:itemData})
+      dispatch({type:'changeAmount', payload:itemData})
     }  
   }
 

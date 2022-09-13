@@ -17,7 +17,7 @@ const CardModal = () => {
 
   const oneButtonHandler = (e) => {
     e.preventDefault()
-    
+
     switch(e.target.innerText){
       
       case '+':
@@ -30,6 +30,8 @@ const CardModal = () => {
         return
     }
   }
+
+
 
   return (
     <div className={styles.cardModal}>
@@ -59,7 +61,7 @@ const CardModal = () => {
        
        <div className={styles.closeOrder}>
         <button onClick={onDisplay}>Close</button>
-        <button onClick={() => console.log('ordering...')}>Order</button>
+        {cardState.card.length !== 0 && <button onClick={() => console.log('ordering...')}>Order</button>}
        </div>
         
       </div>
