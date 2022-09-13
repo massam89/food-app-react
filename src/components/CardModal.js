@@ -4,7 +4,7 @@ import { Context } from '../context/ContextProvider'
 import styles from './CardModal.module.css'
 
 const CardModal = () => {
-  const {onDisplay} = useContext(Context)
+  const {cardState, onDisplay} = useContext(Context)
 
   return (
     <div className={styles.cardModal}>
@@ -13,32 +13,25 @@ const CardModal = () => {
 
       <div className={styles.CardModalInner}>
         <ul>
-          <li>
+          {cardState.card.map(item => (
+            <li key={item.id}>
             <div>
-              <h3>Sushi</h3>
-              <span>$22.99</span> <span>x 3</span>
+              <h3>{item.name}</h3>
+              <span>${item.price}</span> <span>x {item.amount}</span>
             </div>
             <div>
               <button>−</button>
               <button>+</button>
             </div>
           </li>
+          ))}
+          
 
-          <li>
-            <div>
-              <h3>Sushi</h3>
-              <span>$22.99</span> <span>x 3</span>
-            </div>
-            <div>
-              <button>−</button>
-              <button>+</button>
-            </div>
-          </li>
         </ul>
 
         <div className={styles.totalAmount}>
           <span>Total Amount</span>
-          <span>$100</span>
+          <span>${cardState.totalAmount.toFixed(2)}</span>
         </div>
        
        <div className={styles.closeOrder}>
