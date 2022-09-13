@@ -34,10 +34,7 @@ const ContextProvider = (props) => {
     const sum = cardState.card.reduce((acc, cur) => {
       return acc + (cur.amount * cur.price)
     }, 0)
-
     dispatch({type: 'addTotalAmount', payload: sum})
-    console.log('effect');
-   
   },[cardState.card])
 
   const onDisplay = () => {
@@ -54,8 +51,6 @@ const ContextProvider = (props) => {
       dispatch({type:'changeAmount', payload:itemData})
     }  
   }
-
-  console.log(cardState);
 
   return (
     <Context.Provider value={{ cardState, onDisplay, addToCard }}>
