@@ -1,15 +1,40 @@
-import { useContext } from 'react'
+import { useContext, useEffect } from 'react'
 import { Context } from '../context/ContextProvider'
 
 import styles from './CardModal.module.css'
 
 const CardModal = () => {
-  const {cardState, onDisplay} = useContext(Context)
+  const {cardState, onDisplay, addToCard} = useContext(Context)
+
+  useEffect(() => {
+    const interval = setInterval(() => {   
+      window.scrollTo(0, window.pageYOffset - 5)
+      if(window.pageYOffset == 0) {
+        clearInterval(interval)
+      }
+    }, 1)
+  }, [])
+
+  const oneButtonHandler = (e) => {
+    e.preventDefault()
+    
+    switch(e.target.innerText){
+      
+      case '+':
+        addToCard({id: +e.target.getAttribute('data-id'), value: 1})
+        break
+      case '−':
+        addToCard({id: +e.target.getAttribute('data-id'), value: -1})
+        break
+      default:
+        return
+    }
+  }
 
   return (
     <div className={styles.cardModal}>
 
-      <div onClick={onDisplay} className={styles.transparent}>sdf</div>
+      <div onClick={onDisplay} className={styles.transparent}></div>
 
       <div className={styles.CardModalInner}>
         <ul>
@@ -20,13 +45,11 @@ const CardModal = () => {
               <span>${item.price}</span> <span>x {item.amount}</span>
             </div>
             <div>
-              <button>−</button>
-              <button>+</button>
+              <button data-id={item.id} onClick={oneButtonHandler}>−</button>
+              <button data-id={item.id} onClick={oneButtonHandler}>+</button>
             </div>
-          </li>
+            </li>
           ))}
-          
-
         </ul>
 
         <div className={styles.totalAmount}>

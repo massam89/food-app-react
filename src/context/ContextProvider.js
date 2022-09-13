@@ -42,13 +42,15 @@ const ContextProvider = (props) => {
   const addToCard = (data) => {
     let itemData = items.find(item => item.id == data.id)
     itemData = {...itemData, amount: +data.value}
-
-    if(!cardState.card.some(item => item.id == data.id)){
+    
+    if (!cardState.card.some(item => item.id == data.id)){
       dispatch({type: 'addToCard', payload: itemData})
     } else {
       dispatch({type:'addAmount', payload:itemData})
     }  
   }
+
+  console.log(cardState);
 
   return (
     <Context.Provider value={{ cardState, onDisplay, addToCard }}>
