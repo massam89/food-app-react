@@ -10,7 +10,10 @@ const Item = (props) => {
   const onClickHandler = () => {
     if(input.current.value && input.current.value > 0){
       setError(false)
-      addToCard({value:input.current.value, id: input.current.id});
+      addToCard({
+        id: +input.current.id,
+        amount: +input.current.value,
+      });
       input.current.value = ''
     } else {
       setError(true)

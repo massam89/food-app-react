@@ -4,7 +4,7 @@ import { Context } from '../context/ContextProvider'
 import styles from './CardModal.module.css'
 
 const CardModal = () => {
-  const {cardState, onDisplay, addToCard} = useContext(Context)
+  const {cardState, onDisplay, addToCard, removeFromCard} = useContext(Context)
 
   useEffect(() => {
     const interval = setInterval(() => {   
@@ -21,17 +21,15 @@ const CardModal = () => {
     switch(e.target.innerText){
       
       case '+':
-        addToCard({id: +e.target.getAttribute('data-id'), value: 1})
+        addToCard({id: +e.target.getAttribute('data-id'), amount: 1})
         break
       case '−':
-        addToCard({id: +e.target.getAttribute('data-id'), value: -1})
+        removeFromCard(+e.target.getAttribute('data-id'))
         break
       default:
         return
     }
   }
-
-
 
   return (
     <div className={styles.cardModal}>

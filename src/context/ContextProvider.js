@@ -1,67 +1,73 @@
 import React, { useReducer, useEffect } from 'react'
 import {items} from '../database/items.js'
-export const Context = React.createContext();
+
+export const Context = React.createContext({
+  card: [],
+  totalAmount: 0,
+  addItem: (item) => {},
+  removeItem: (id) => {}
+});
+
+const defaultCardState = {
+  card: [],
+  totalAmount: 0,
+  showCard: false,
+  addToCard: () => {},
+  removeFromCard: () => {}
+}
 
 const cardReducer = (state, action) => {
   switch(action.type){
-    case 'addToCard':
-      return ({ ...state, card: [...state.card, action.payload] })
-    case 'cardDisplay':
-      return ({...state, showCard: !state.showCard})
-    case 'changeAmount':
-      const cards = state.card
-      cards[action.payload.id].amount = cards[action.payload.id].amount + action.payload.amount
-      return ({...state, card: [...cards]}) 
-    case 'addTotalAmount':
-      return ({...state, totalAmount: action.payload})
-    case 'removeItem':
-      const newCard = state.card.filter(item => item.id !== action.payload)
-      return ({...state, card: [...newCard]})
+    case 'DISPLAY':
+      return {...state, showCard: !state.showCard}
+    case 'ADD':
+
+      let updatedItems;
+
+      if(state.card.some(item => item.id === action.item.id)){
+        const selectedItemIndex = items.findIndex(item => item.id === action.item.id)
+        const existingItem = state.card[selectedItemIndex]
+        const updateItem = {...existingItem, amount: existingItem.amount + action.item.amount}
+        
+        updatedItems = [...state.card]
+        updatedItems[selectedItemIndex] = updateItem
+
+        return {...state, card: updatedItems}
+
+      }else {
+        const selectedItem = items.find(item => item.id === action.item.id)
+        selectedItem.amount = action.item.amount
+  
+        updatedItems = [...state.card, selectedItem]
+  
+        return {...state, card: updatedItems}
+      }
+      
     default:
-      return state
+      return defaultCardState
   }
 }
 
 const ContextProvider = (props) => {
 
-  const [cardState, dispatch] = useReducer(cardReducer, {
-    card: [],
-    totalAmount: 0,
-    showCard: false
-  })
-
-  useEffect(() => {
-    const sum = cardState.card.reduce((acc, cur) => {
-      return acc + (cur.amount * cur.price)
-    }, 0)
-    dispatch({type: 'addTotalAmount', payload: sum})
-
-    // const zeroItem = cardState.card.find(item => item.amount < 1)
-    
-    // if(zeroItem !== undefined){
-    //    dispatch({type: 'removeItem', payload: zeroItem.id})
-    // }
-   
-
-  },[cardState.card])
+  const [cardState, dispatch] = useReducer(cardReducer, defaultCardState)
 
   const onDisplay = () => {
-    dispatch({type: 'cardDisplay'})
+    dispatch({type: 'DISPLAY'})
   }
 
-  const addToCard = (data) => {
-    let itemData = items.find(item => +item.id === +data.id)
-    itemData = {...itemData, amount: +data.value}
-    
-    if (!cardState.card.some(item => +item.id === +data.id)){
-      dispatch({type: 'addToCard', payload: itemData})
-    } else {
-      dispatch({type:'changeAmount', payload:itemData})
-    }  
+  const addToCard = (item) => {
+    dispatch({type: 'ADD', item: item})
   }
+
+  const removeFromCard = (id) => {
+
+  }
+
+
 
   return (
-    <Context.Provider value={{ cardState, onDisplay, addToCard }}>
+    <Context.Provider value={{ cardState, onDisplay, addToCard, removeFromCard }}>
       {props.children}
     </Context.Provider>
   )
