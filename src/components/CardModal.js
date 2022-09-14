@@ -18,8 +18,7 @@ const CardModal = () => {
   const oneButtonHandler = (e) => {
     e.preventDefault()
 
-    switch(e.target.innerText){
-      
+    switch(e.target.innerText){  
       case '+':
         addToCard({id: +e.target.getAttribute('data-id'), amount: 1})
         break
