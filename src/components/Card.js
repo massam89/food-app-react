@@ -8,9 +8,11 @@ const Card = () => {
 
   useEffect(() => {
     setTrans(true)
-    setTimeout(() => {
+    const timer = setTimeout(() => {
       setTrans(false)
     }, 100)
+
+    return () => clearTimeout(timer)
   }, [cardState.card])
 
   return (
