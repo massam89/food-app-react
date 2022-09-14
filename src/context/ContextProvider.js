@@ -54,8 +54,14 @@ const cardReducer = (state, action) => {
         const updatedItem = {...existingItem, amount: existingItem.amount - 1 }
 
         updatedItems2 = [...state.card]
-        updatedItems2[selectedItemIndex] = updatedItem
 
+        if(updatedItem.amount === 0) {
+          updatedItems2.splice(selectedItemIndex, 1)
+        } else {
+          updatedItems2[selectedItemIndex] = updatedItem
+        }
+
+        
         const updatedTotalAmount = updatedItems2.reduce((cur, item) =>{
           return cur + (item.price * item.amount)
         },0)
