@@ -11,7 +11,7 @@ const cardReducer = (state, action) => {
     case 'changeAmount':
       const cards = state.card
       cards[action.payload.id].amount = cards[action.payload.id].amount + action.payload.amount
-      return ({...state, card: [...cards]})
+      return ({...state, card: [...cards]}) 
     case 'addTotalAmount':
       return ({...state, totalAmount: action.payload})
     case 'removeItem':
@@ -35,6 +35,14 @@ const ContextProvider = (props) => {
       return acc + (cur.amount * cur.price)
     }, 0)
     dispatch({type: 'addTotalAmount', payload: sum})
+
+    // const zeroItem = cardState.card.find(item => item.amount < 1)
+    
+    // if(zeroItem !== undefined){
+    //    dispatch({type: 'removeItem', payload: zeroItem.id})
+    // }
+   
+
   },[cardState.card])
 
   const onDisplay = () => {
@@ -42,10 +50,10 @@ const ContextProvider = (props) => {
   }
 
   const addToCard = (data) => {
-    let itemData = items.find(item => item.id == data.id)
+    let itemData = items.find(item => +item.id === +data.id)
     itemData = {...itemData, amount: +data.value}
     
-    if (!cardState.card.some(item => item.id == data.id)){
+    if (!cardState.card.some(item => +item.id === +data.id)){
       dispatch({type: 'addToCard', payload: itemData})
     } else {
       dispatch({type:'changeAmount', payload:itemData})
