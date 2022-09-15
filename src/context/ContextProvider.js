@@ -24,9 +24,7 @@ const cardReducer = (state, action) => {
       let updatedItems;
       if(state.card.some(item => item.id === action.item.id)){
         const selectedItemIndex = state.card.findIndex(item => item.id === action.item.id)
-        console.log(selectedItemIndex, 'index');
         const existingItem = state.card[selectedItemIndex]
-        console.log(existingItem, 'exist');
         const updateItem = {...existingItem, amount: existingItem.amount + action.item.amount}
         
         updatedItems = [...state.card]
@@ -89,8 +87,6 @@ const ContextProvider = (props) => {
   const removeFromCard = (id) => {
     dispatch({type: 'REMOVE', id: id})
   }
-
-  console.log(cardState.card, 'card');
 
   return (
     <Context.Provider value={{ cardState, onDisplay, addToCard, removeFromCard }}>
