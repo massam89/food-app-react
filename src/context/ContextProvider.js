@@ -23,8 +23,10 @@ const cardReducer = (state, action) => {
     case 'ADD':
       let updatedItems;
       if(state.card.some(item => item.id === action.item.id)){
-        const selectedItemIndex = items.findIndex(item => item.id === action.item.id)
+        const selectedItemIndex = state.card.findIndex(item => item.id === action.item.id)
+        console.log(selectedItemIndex, 'index');
         const existingItem = state.card[selectedItemIndex]
+        console.log(existingItem, 'exist');
         const updateItem = {...existingItem, amount: existingItem.amount + action.item.amount}
         
         updatedItems = [...state.card]
@@ -49,7 +51,7 @@ const cardReducer = (state, action) => {
       }
       case 'REMOVE':
         let updatedItems2;
-        const selectedItemIndex = items.findIndex(item => item.id === action.id)
+        const selectedItemIndex = state.card.findIndex(item => item.id === action.id)
         const existingItem = state.card.find(item => item.id === action.id)
         const updatedItem = {...existingItem, amount: existingItem.amount - 1 }
 
@@ -88,7 +90,7 @@ const ContextProvider = (props) => {
     dispatch({type: 'REMOVE', id: id})
   }
 
-
+  console.log(cardState.card, 'card');
 
   return (
     <Context.Provider value={{ cardState, onDisplay, addToCard, removeFromCard }}>

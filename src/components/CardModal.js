@@ -9,7 +9,7 @@ const CardModal = () => {
   useEffect(() => {
     const interval = setInterval(() => {   
       window.scrollTo(0, window.pageYOffset - 5)
-      if(window.pageYOffset == 0) {
+      if(window.pageYOffset === 0) {
         clearInterval(interval)
       }
     }, 1)
@@ -37,8 +37,8 @@ const CardModal = () => {
 
       <div className={styles.CardModalInner}>
         <ul>
-          {cardState.card.map(item => (
-            <li key={item.id}>
+          {cardState.card.map((item, index) => (
+            <li key={index}>
             <div>
               <h3>{item.name}</h3>
               <span>${item.price}</span> <span>x {item.amount}</span>
