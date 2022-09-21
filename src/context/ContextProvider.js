@@ -1,9 +1,9 @@
 import React, { useReducer } from 'react'
-import {items} from '../database/items.js'
 
 export const Context = React.createContext({
   card: [],
   totalAmount: 0,
+  showCard: false,
   addItem: (item) => {},
   removeItem: (id) => {}
 });
@@ -12,6 +12,7 @@ const defaultCardState = {
   card: [],
   totalAmount: 0,
   showCard: false,
+  meals: [],
   addToCard: () => {},
   removeFromCard: () => {}
 }
@@ -36,7 +37,7 @@ const cardReducer = (state, action) => {
 
         return {...state, card: updatedItems, totalAmount: updatedTotalAmount}
       }else {
-        const selectedItem = items.find(item => item.id === action.item.id)
+        const selectedItem = state.meals.find(item => item.id === action.item.id)
         selectedItem.amount = action.item.amount
   
         updatedItems = [...state.card, selectedItem]
@@ -67,6 +68,8 @@ const cardReducer = (state, action) => {
         },0)
 
         return {...state, card: updatedItems2, totalAmount: updatedTotalAmount}
+      case 'MEALS':
+        return {...state, meals: action.meals}
     default:
       return defaultCardState
   }
@@ -88,8 +91,12 @@ const ContextProvider = (props) => {
     dispatch({type: 'REMOVE', id: id})
   }
 
+  const addMeals = (meals) => {
+    dispatch({type: 'MEALS', meals: meals})
+  }
+
   return (
-    <Context.Provider value={{ cardState, onDisplay, addToCard, removeFromCard }}>
+    <Context.Provider value={{ cardState, onDisplay, addToCard, removeFromCard, addMeals }}>
       {props.children}
     </Context.Provider>
   )

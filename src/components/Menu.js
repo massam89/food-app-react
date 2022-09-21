@@ -1,11 +1,14 @@
-import { useCallback, useEffect, useState } from "react"
+import { useCallback, useEffect, useState, useContext } from "react"
 import Item from "./Item"
 import styles from './Menu.module.css'
+import { Context } from "../context/ContextProvider"
 
 const Menu = () => {
   const [meals, setMeals] = useState([])
   const [error, setError] = useState(false)
   const [isLoading, setIsLoading] = useState(true)
+
+  const ctx = useContext(Context)
 
   const getMeals = useCallback(async() => {
     try{
@@ -26,7 +29,8 @@ const Menu = () => {
       });
 
       setMeals(myMeals)
-      setIsLoading(false) 
+      setIsLoading(false)
+      ctx.addMeals(myMeals)
     } catch {
       setIsLoading(false)
       setError(true)
