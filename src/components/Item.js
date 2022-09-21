@@ -14,7 +14,7 @@ const Item = (props) => {
         id: +input.current.id,
         amount: +input.current.value,
       });
-      input.current.value = ''
+      input.current.value = '1'
     } else {
       setError(true)
     }
@@ -29,7 +29,7 @@ const Item = (props) => {
       </div>
       <div>
         <label htmlFor={`${props.item.id}`}>Amount</label>
-        <input className={error ? styles.error : ''} ref={input} type='number' id={`${props.item.id}`}/>
+        <input className={error ? styles.error : ''} ref={input} defaultValue='1' type='number' id={`${props.item.id}`}/>
         <button onClick={onClickHandler}>+ Add</button>
       </div>
     </li>

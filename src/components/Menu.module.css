@@ -10,3 +10,15 @@
   flex-direction: column;
   align-items: center;
 }
+
+.menu button {
+  display: inline-block;
+  margin-left: 10px;
+  border: none;
+  background-color: var(--red-light);
+  color: var(--white);
+  padding: 5px 25px;
+  margin-top: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+}

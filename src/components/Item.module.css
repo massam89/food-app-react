@@ -52,11 +52,6 @@
   outline: none;
 }
 
-.item div input::-webkit-outer-spin-button,
-.item div input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-}
-
 .item div label {
   font-size: 14px;
   font-weight: 800;
