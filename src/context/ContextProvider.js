@@ -70,6 +70,8 @@ const cardReducer = (state, action) => {
         return {...state, card: updatedItems2, totalAmount: updatedTotalAmount}
       case 'MEALS':
         return {...state, meals: action.meals}
+      case 'CLEAR':
+        return {...state, card: [], showCard:true, totalAmount: 0}
     default:
       return defaultCardState
   }
@@ -95,8 +97,12 @@ const ContextProvider = (props) => {
     dispatch({type: 'MEALS', meals: meals})
   }
 
+  const clearCard = () => {
+    dispatch({type: 'CLEAR'})
+  }
+
   return (
-    <Context.Provider value={{ cardState, onDisplay, addToCard, removeFromCard, addMeals }}>
+    <Context.Provider value={{ cardState, onDisplay, addToCard, removeFromCard, addMeals, clearCard }}>
       {props.children}
     </Context.Provider>
   )

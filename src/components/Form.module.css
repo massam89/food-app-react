@@ -1,0 +1,50 @@
+.form {
+  
+}
+
+.form input {
+  display: block;
+  width: auto;
+  background-color: var(--white);
+  border: 1px solid rgb(195, 191, 191);
+  border-radius: 3px;
+  padding: 5px 5px 5px 5px;
+
+  color: gray;
+  font-weight: 900;
+  margin-bottom: 10px;
+}
+
+.form input:focus {
+  outline: none;
+}
+
+.form label {
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.cancelConfirm {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.cancelConfirm button {
+  outline: none;
+  border: none;
+  border: 1px solid var(--red-light);
+  padding: 7px 20px;
+  margin: 10px 5px 0px 5px;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.cancelConfirm button:nth-child(2) {
+  background-color: var(--red-light);
+  color: var(--white);
+}
+
+.form span {
+  color: red;
+  font-size: 12px;
+}
