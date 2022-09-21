@@ -54,7 +54,6 @@ const CardModal = () => {
       clearCard()
     })
     .catch(error => console.log(error))
-
   }
 
   return (

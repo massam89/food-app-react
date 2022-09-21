@@ -102,10 +102,19 @@ const ContextProvider = (props) => {
   }
 
   return (
-    <Context.Provider value={{ cardState, onDisplay, addToCard, removeFromCard, addMeals, clearCard }}>
+    <Context.Provider
+      value={{
+        cardState,
+        onDisplay,
+        addToCard,
+        removeFromCard,
+        addMeals,
+        clearCard,
+      }}
+    >
       {props.children}
     </Context.Provider>
-  )
+  );
 }
 
 export default ContextProvider

@@ -3,8 +3,21 @@ import styles from './Form.module.css'
 
 const Form = (props) => {
 
-  const {enteredValue: enteredName, onChangeValue: onChangeName, reset: resetName, valueIsInValid: nameIsInValid, onBlurValue: onBlurName} = useInput((value) => value.trim() !== '' )
-  const {enteredValue: enteredAddress, onChangeValue: onChangeAddress, reset: resetAddress, valueIsInValid: addressIsInValid, onBlurValue: onBlurAddress} = useInput((value) => value.trim() !== '' )
+  const {
+    enteredValue: enteredName,
+    onChangeValue: onChangeName,
+    reset: resetName,
+    valueIsInValid: nameIsInValid,
+    onBlurValue: onBlurName,
+  } = useInput((value) => value.trim() !== "");
+  
+  const {
+    enteredValue: enteredAddress,
+    onChangeValue: onChangeAddress,
+    reset: resetAddress,
+    valueIsInValid: addressIsInValid,
+    onBlurValue: onBlurAddress,
+  } = useInput((value) => value.trim() !== "");
 
   const onCancelHandler = () => {
     props.onCancel()

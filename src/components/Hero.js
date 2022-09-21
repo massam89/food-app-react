@@ -3,8 +3,8 @@ import styles from './Hero.module.css'
 const Hero = () => {
   return (
     <section className={styles.hero}>
-      <div className={styles.slide}>
-        
+      
+      <div className={styles.slide}>    
         <div className={styles.shape}></div>
       </div>
       
